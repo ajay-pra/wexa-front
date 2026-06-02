@@ -2,20 +2,23 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { API_URL } from '../api';
+import { useDispatch } from 'react-redux';
+import { loginSuccess } from '../store/authSlice';
 
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-    const response = axios.post(`${API_URL}/auth/login`, { email, password });
+    const response = await axios.post(`${API_URL}/auth/login`, { email, password });
 
-      localStorage.setItem('token', response.data.token);
+    //   localStorage.setItem('token', response.data.token);
+        dispatch(loginSuccess(response.data.token));
 
       navigate('/');
     } catch (err) {
