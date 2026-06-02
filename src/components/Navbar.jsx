@@ -10,16 +10,40 @@ const Navbar = () => {
   };
 
   return (
-    <nav>
-      <h2>StockFlow</h2>
+    <nav className="bg-white shadow px-6 py-4 flex justify-between items-center">
+      <h2 className="text-xl font-bold text-indigo-600">
+        StockFlow
+      </h2>
 
-      <Link to="/">Dashboard</Link>
-      <Link to="/products">Products</Link>
-      <Link to="/settings">Settings</Link>
+      <div className="flex gap-6 items-center">
+        <Link
+          to="/"
+          className="text-gray-700 hover:text-indigo-600"
+        >
+          Dashboard
+        </Link>
 
-      <button onClick={handleLogout}>
-        Logout
-      </button>
+        <Link
+          to="/products"
+          className="text-gray-700 hover:text-indigo-600"
+        >
+          Products
+        </Link>
+
+        <Link
+          to="/settings"
+          className="text-gray-700 hover:text-indigo-600"
+        >
+          Settings
+        </Link>
+
+        <button
+          onClick={handleLogout}
+          className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600"
+        >
+          Logout
+        </button>
+      </div>
     </nav>
   );
 };
