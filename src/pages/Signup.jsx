@@ -25,45 +25,85 @@ function Signup() {
   };
 
   return (
-    <div>
-      <h1>Signup</h1>
+    <div className="min-h-screen flex items-center justify-center bg-gray-100">
+      <div className="w-full max-w-sm bg-white p-6 rounded-lg shadow">
+        <h1 className="text-2xl font-bold text-center mb-6">
+          Sign Up
+        </h1>
 
-      {error && <p>{error}</p>}
+        {error && (
+          <p className="text-red-500 text-center mb-4">
+            {error}
+          </p>
+        )}
 
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Organisation Name</label>
-          <input
-            type="text"
-            value={organisationName}
-            onChange={(e) => setOrganisationName(e.target.value)}
-          />
-        </div>
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <div>
+            <label className="block mb-1">
+              Organisation Name
+            </label>
 
-        <div>
-          <label>Email</label>
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </div>
+            <input
+              type="text"
+              value={organisationName}
+              onChange={(e) =>
+                setOrganisationName(e.target.value)
+              }
+              className="w-full border p-2 rounded"
+              required
+            />
+          </div>
 
-        <div>
-          <label>Password</label>
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </div>
+          <div>
+            <label className="block mb-1">
+              Email
+            </label>
 
-        <button type="submit">Sign Up</button>
-      </form>
+            <input
+              type="email"
+              value={email}
+              onChange={(e) =>
+                setEmail(e.target.value)
+              }
+              className="w-full border p-2 rounded"
+              required
+            />
+          </div>
 
-      <p>
-        Already have an account? <Link to="/login">Login</Link>
-      </p>
+          <div>
+            <label className="block mb-1">
+              Password
+            </label>
+
+            <input
+              type="password"
+              value={password}
+              onChange={(e) =>
+                setPassword(e.target.value)
+              }
+              className="w-full border p-2 rounded"
+              required
+            />
+          </div>
+
+          <button
+            type="submit"
+            className="w-full bg-blue-500 text-white p-2 rounded"
+          >
+            Sign Up
+          </button>
+        </form>
+
+        <p className="text-center mt-4">
+          Already have an account?{' '}
+          <Link
+            to="/login"
+            className="text-blue-500"
+          >
+            Login
+          </Link>
+        </p>
+      </div>
     </div>
   );
 }
