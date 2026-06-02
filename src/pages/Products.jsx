@@ -164,210 +164,222 @@ function Products() {
   );
 
   return (
-    <div>
-        <Navbar/>
-      <h1>Products</h1>
+    <div className="min-h-screen bg-gray-100">
+      <Navbar />
 
-      <button onClick={openCreate}>
-        Add Product
-      </button>
+      <div className="max-w-6xl mx-auto p-6">
+        <div className="flex justify-between items-center mb-6">
+          <h1 className="text-3xl font-bold">
+            Products
+          </h1>
 
-      <br />
-      <br />
-
-      <input
-        type="text"
-        placeholder="Search by name or SKU"
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-      />
-
-      <br />
-      <br />
-
-      <table border="1">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>SKU</th>
-            <th>Quantity</th>
-            <th>Price</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          {filteredProducts.map((product) => (
-            <tr key={product._id}>
-              <td>{product.name}</td>
-              <td>{product.sku}</td>
-              <td>{product.quantity}</td>
-              <td>{product.sellingPrice}</td>
-              <td>
-                <button
-                  onClick={() => openEdit(product)}
-                >
-                  Edit
-                </button>
-
-                <button
-                  onClick={() =>
-                    handleDelete(product._id)
-                  }
-                >
-                  Delete
-                </button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-
-      {showModal && (
-        <div>
-          <h2>
-            {editingId
-              ? 'Edit Product'
-              : 'Add Product'}
-          </h2>
-
-          <form onSubmit={handleSubmit}>
-            <div>
-              <label>Name</label>
-              <br />
-              <input
-                type="text"
-                value={formData.name}
-                onChange={(e) =>
-                  setFormData({
-                    ...formData,
-                    name: e.target.value
-                  })
-                }
-                required
-              />
-            </div>
-
-            <br />
-
-            <div>
-              <label>SKU</label>
-              <br />
-              <input
-                type="text"
-                value={formData.sku}
-                onChange={(e) =>
-                  setFormData({
-                    ...formData,
-                    sku: e.target.value
-                  })
-                }
-                required
-              />
-            </div>
-
-            <br />
-
-            <div>
-              <label>Description</label>
-              <br />
-              <input
-                type="text"
-                value={formData.description}
-                onChange={(e) =>
-                  setFormData({
-                    ...formData,
-                    description: e.target.value
-                  })
-                }
-              />
-            </div>
-
-            <br />
-
-            <div>
-              <label>Quantity</label>
-              <br />
-              <input
-                type="number"
-                value={formData.quantity}
-                onChange={(e) =>
-                  setFormData({
-                    ...formData,
-                    quantity: Number(e.target.value)
-                  })
-                }
-                required
-              />
-            </div>
-
-            <br />
-
-            <div>
-              <label>Cost Price</label>
-              <br />
-              <input
-                type="number"
-                value={formData.costPrice}
-                onChange={(e) =>
-                  setFormData({
-                    ...formData,
-                    costPrice: Number(e.target.value)
-                  })
-                }
-              />
-            </div>
-
-            <br />
-
-            <div>
-              <label>Selling Price</label>
-              <br />
-              <input
-                type="number"
-                value={formData.sellingPrice}
-                onChange={(e) =>
-                  setFormData({
-                    ...formData,
-                    sellingPrice: Number(e.target.value)
-                  })
-                }
-                required
-              />
-            </div>
-
-            <br />
-
-            <div>
-              <label>Low Stock Threshold</label>
-              <br />
-              <input
-                type="number"
-                value={formData.lowStockThreshold}
-                onChange={(e) =>
-                  setFormData({
-                    ...formData,
-                    lowStockThreshold: e.target.value
-                  })
-                }
-              />
-            </div>
-
-            <br />
-
-            <button type="submit">
-              {editingId ? 'Update' : 'Create'}
-            </button>
-
-            <button
-              type="button"
-              onClick={() => setShowModal(false)}
-            >
-              Cancel
-            </button>
-          </form>
+          <button
+            onClick={openCreate}
+            className="bg-blue-500 text-white px-4 py-2 rounded"
+          >
+            Add Product
+          </button>
         </div>
-      )}
+
+        <input
+          type="text"
+          placeholder="Search by name or SKU"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          className="w-full border p-2 rounded mb-6"
+        />
+
+        <table className="w-full bg-white shadow rounded">
+          <thead>
+            <tr>
+              <th className="border p-3">Name</th>
+              <th className="border p-3">SKU</th>
+              <th className="border p-3">Quantity</th>
+              <th className="border p-3">Price</th>
+              <th className="border p-3">Actions</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            {filteredProducts.map((product) => (
+              <tr key={product._id}>
+                <td className="border p-2">
+                  {product.name}
+                </td>
+
+                <td className="border p-2">
+                  {product.sku}
+                </td>
+
+                <td className="border p-2">
+                  {product.quantity}
+                </td>
+
+                <td className="border p-2">
+                  ₹{product.sellingPrice}
+                </td>
+
+                <td className="border p-2">
+                  <button
+                    onClick={() => openEdit(product)}
+                    className="bg-yellow-500 text-white px-2 py-1 rounded mr-2"
+                  >
+                    Edit
+                  </button>
+
+                  <button
+                    onClick={() =>
+                      handleDelete(product._id)
+                    }
+                    className="bg-red-500 text-white px-2 py-1 rounded"
+                  >
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+
+        {showModal && (
+          <div className="fixed inset-0 bg-black/50 flex items-center justify-center">
+            <form
+              onSubmit={handleSubmit}
+              className="bg-white p-6 rounded shadow w-full max-w-md"
+            >
+              <h2 className="text-2xl font-bold mb-4">
+                {editingId
+                  ? 'Edit Product'
+                  : 'Add Product'}
+              </h2>
+
+              <div className="mb-3">
+                <label>Name</label>
+                <input
+                  type="text"
+                  className="w-full border p-2 rounded"
+                  value={formData.name}
+                  onChange={(e) =>
+                    setFormData({
+                      ...formData,
+                      name: e.target.value
+                    })
+                  }
+                  required
+                />
+              </div>
+
+              <div className="mb-3">
+                <label>SKU</label>
+                <input
+                  type="text"
+                  className="w-full border p-2 rounded"
+                  value={formData.sku}
+                  onChange={(e) =>
+                    setFormData({
+                      ...formData,
+                      sku: e.target.value
+                    })
+                  }
+                  required
+                />
+              </div>
+
+              <div className="mb-3">
+                <label>Description</label>
+                <input
+                  type="text"
+                  className="w-full border p-2 rounded"
+                  value={formData.description}
+                  onChange={(e) =>
+                    setFormData({
+                      ...formData,
+                      description: e.target.value
+                    })
+                  }
+                />
+              </div>
+
+              <div className="mb-3">
+                <label>Quantity</label>
+                <input
+                  type="number"
+                  className="w-full border p-2 rounded"
+                  value={formData.quantity}
+                  onChange={(e) =>
+                    setFormData({
+                      ...formData,
+                      quantity: Number(e.target.value)
+                    })
+                  }
+                  required
+                />
+              </div>
+
+              <div className="mb-3">
+                <label>Cost Price</label>
+                <input
+                  type="number"
+                  className="w-full border p-2 rounded"
+                  value={formData.costPrice}
+                  onChange={(e) =>
+                    setFormData({
+                      ...formData,
+                      costPrice: Number(e.target.value)
+                    })
+                  }
+                />
+              </div>
+
+              <div className="mb-3">
+                <label>Selling Price</label>
+                <input
+                  type="number"
+                  className="w-full border p-2 rounded"
+                  value={formData.sellingPrice}
+                  onChange={(e) =>
+                    setFormData({
+                      ...formData,
+                      sellingPrice: Number(e.target.value)
+                    })
+                  }
+                  required
+                />
+              </div>
+
+              <div className="mb-4">
+                <label>Low Stock Threshold</label>
+                <input
+                  type="number"
+                  className="w-full border p-2 rounded"
+                  value={formData.lowStockThreshold}
+                  onChange={(e) =>
+                    setFormData({
+                      ...formData,
+                      lowStockThreshold: e.target.value
+                    })
+                  }
+                />
+              </div>
+
+              <button
+                type="submit"
+                className="bg-blue-500 text-white px-4 py-2 rounded mr-2"
+              >
+                {editingId ? 'Update' : 'Create'}
+              </button>
+
+              <button
+                type="button"
+                onClick={() => setShowModal(false)}
+                className="bg-gray-500 text-white px-4 py-2 rounded"
+              >
+                Cancel
+              </button>
+            </form>
+          </div>
+        )}
+      </div>
     </div>
   );
 }
