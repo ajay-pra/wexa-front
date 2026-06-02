@@ -12,7 +12,7 @@ import Settings from './pages/Settings';
 
 function App() {
   return (
-    <Router>
+    <Router basename="/wexa-ai">
     <Provider store={store}>
         <Routes>
           <Route path="/login" element={<Login />} />
