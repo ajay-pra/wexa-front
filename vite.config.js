@@ -8,5 +8,11 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
-  base: '/wexa-ai/'
+  base: '/wexa-ai/',
+  test: {
+    globals: true,
+    environment: 'happy-dom',
+    setupFiles: './src/setupTests.js',
+    pool: 'threads',
+  },
 })
