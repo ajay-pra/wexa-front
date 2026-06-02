@@ -72,7 +72,7 @@ function Login() {
 
           <button
             type="submit"
-            className="w-full bg-blue-500 text-white p-2 rounded"
+            className="w-full bg-blue-500 text-white p-2 rounded cursor-pointer"
           >
             Login
           </button>
